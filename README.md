@@ -47,6 +47,24 @@ python mail_generator.py
 
 ---
 
+## 🛠️ Запуск на VPS (Ubuntu/Debian)
+
+Если вы используете чистый сервер, выполните следующие команды для настройки окружения:
+
+```bash
+cd ~/mail-generator
+sudo apt update
+sudo apt install -y python3-venv python3-full
+
+python3 -m venv .venv
+source .venv/bin/activate
+
+python -m pip install --upgrade pip
+pip install requests
+```
+
+---
+
 ## 📸 Интерфейс
 
 ```

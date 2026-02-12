@@ -1,0 +1,4 @@
+generated_accounts.json
+.venv/
+__pycache__/
+*.pyc
