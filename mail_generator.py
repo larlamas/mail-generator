@@ -695,6 +695,30 @@ def action_export_txt():
     print_info(f"Всего: {len(accounts)} аккаунт(ов)")
 
 
+def action_setup_env():
+    """Вывод команд для настройки окружения на VPS."""
+    print()
+    print(f"  {C.BOLD}🛠️  Настройка окружения (VPS){C.RESET}")
+    print_separator()
+    print(f"  {C.CYAN}Для настройки чистого VPS выполните следующие команды:{C.RESET}\n")
+
+    commands = """
+cd ~/mail-generator
+sudo apt update
+sudo apt install -y python3-venv python3-full
+
+python3 -m venv .venv
+source .venv/bin/activate
+
+python -m pip install --upgrade pip
+pip install requests
+"""
+    print(f"{C.YELLOW}{commands.strip()}{C.RESET}")
+    print()
+    print_info("Скопируйте и выполните эти команды в терминале.")
+    input(f"\n  Нажмите Enter для продолжения...")
+
+
 # ─────────────────────────── Главное меню ───────────────────────────
 
 def main_menu():
@@ -712,6 +736,7 @@ def main_menu():
         print(f"    {C.YELLOW}5.{C.RESET} ⏳ Ждать новое письмо")
         print(f"    {C.YELLOW}6.{C.RESET} 🗑️  Удалить аккаунт")
         print(f"    {C.YELLOW}7.{C.RESET} 💾 Экспорт в .txt")
+        print(f"    {C.YELLOW}8.{C.RESET} 🛠️  Настройка окружения (VPS)")
         print(f"    {C.YELLOW}0.{C.RESET} 🚪 Выход")
         print()
 
@@ -731,6 +756,8 @@ def main_menu():
             action_delete_account()
         elif choice == "7":
             action_export_txt()
+        elif choice == "8":
+            action_setup_env()
         elif choice == "0":
             print(f"\n  {C.CYAN}👋 До свидания!{C.RESET}\n")
             break
